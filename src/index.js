@@ -1,3 +1,5 @@
+import isNonNullObject from 'is-non-null-object';
+
 const { hasOwnProperty, toString } = Object.prototype;
 
 /**
@@ -7,15 +9,6 @@ const { hasOwnProperty, toString } = Object.prototype;
  */
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
-}
-
-/**
- * Check if the given value is a non-null object.
- * @param {*} value - The value to check.
- * @returns {boolean} Returns `true` if the given value is a non-null object, else `false`.
- */
-function isNonNullObject(value) {
-  return typeof value === 'object' && value !== null;
 }
 
 /**
