@@ -1,14 +1,13 @@
-/*!
- * isVueComponent v0.1.0
- * https://github.com/fengyuanchen/is-vue-component
- *
- * Copyright (c) 2018-present Chen Fengyuan
- * Released under the MIT license
- *
- * Date: 2018-04-15T08:58:44.656Z
- */
-
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * Check if the given value is a non-null object.
+ * @param {*} value - The value to check.
+ * @returns {boolean} Returns `true` if the given value is a non-null object, else `false`.
+ */
+function isNonNullObject(value) {
+  return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && value !== null;
+}
 
 var _Object$prototype = Object.prototype,
     hasOwnProperty = _Object$prototype.hasOwnProperty,
@@ -22,15 +21,6 @@ var _Object$prototype = Object.prototype,
 
 function isNonEmptyString(value) {
   return typeof value === 'string' && value.trim().length > 0;
-}
-
-/**
- * Check if the given value is a non-null object.
- * @param {*} value - The value to check.
- * @returns {boolean} Returns `true` if the given value is a non-null object, else `false`.
- */
-function isNonNullObject(value) {
-  return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && value !== null;
 }
 
 /**
