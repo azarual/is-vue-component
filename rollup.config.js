@@ -1,39 +1,48 @@
+const nodeResolve = require('rollup-plugin-node-resolve');
 const babel = require('rollup-plugin-babel');
+const changeCase = require('change-case');
+const createBanner = require('create-banner');
 const pkg = require('./package');
 
-const now = new Date();
-const banner = `/*!
- * isVueComponent v${pkg.version}
- * https://github.com/${pkg.repository}
- *
- * Copyright (c) 2018-present ${pkg.author.name}
- * Released under the ${pkg.license} license
- *
- * Date: ${now.toISOString()}
- */
-`;
+const name = changeCase.camelCase(pkg.name);
 
 module.exports = {
   input: 'src/index.js',
   output: [
     {
-      banner,
-      file: 'dist/is-vue-component.js',
+      name,
+      banner: createBanner({
+        data: {
+          name,
+          year: '2018-present',
+        },
+      }),
+      file: `dist/${pkg.name}.js`,
       format: 'umd',
-      name: 'isVueComponent',
     },
     {
-      banner,
-      file: 'dist/is-vue-component.common.js',
+      name,
+      banner: createBanner({
+        data: {
+          name,
+          year: '2018-present',
+        },
+        template: 'inline',
+      }),
+      file: `dist/${pkg.name}.min.js`,
+      format: 'umd',
+    },
+    {
+      file: `dist/${pkg.name}.common.js`,
       format: 'cjs',
     },
     {
-      banner,
-      file: 'dist/is-vue-component.esm.js',
-      format: 'es',
+      file: `dist/${pkg.name}.esm.js`,
+      format: 'esm',
     },
   ],
   plugins: [
+    nodeResolve(),
     babel(),
   ],
 };
