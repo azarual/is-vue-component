@@ -12,8 +12,8 @@ module.exports = {
     {
       name,
       banner: createBanner({
+        case: 'camelCase',
         data: {
-          name,
           year: '2018-present',
         },
       }),
@@ -23,8 +23,8 @@ module.exports = {
     {
       name,
       banner: createBanner({
+        case: 'camelCase',
         data: {
-          name,
           year: '2018-present',
         },
         template: 'inline',
